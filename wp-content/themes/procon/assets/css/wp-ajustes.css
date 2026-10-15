@@ -1,0 +1,87 @@
+/*
+ * Ajustes do CSS de referência ao WordPress / Elementor.
+ * O CSS em assets/css/referencia/ é cópia fiel da página de referência — altere aqui, não lá.
+ */
+
+/* Elementos ocultos via atributo hidden (abas, filtros e painéis do procon.js) */
+[hidden] { display: none !important; }
+
+/* Contêineres do Elementor que envolvem as seções da referência: sem respiro extra */
+.e-con.procon-secao {
+  --padding-top: 0px;
+  --padding-right: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 0px;
+  --gap: 0px;
+  --row-gap: 0px;
+  --column-gap: 0px;
+}
+.procon-secao > .elementor-widget,
+.procon-secao > .e-con-inner > .elementor-widget { width: 100%; margin: 0; }
+
+/* Cabeçalho fixo abaixo da barra de administração (usuário logado) */
+.admin-bar .site-header { top: 32px; }
+@media (max-width: 782px) {
+  .admin-bar .site-header { top: 46px; }
+}
+
+/* Botões de filtro e paginação renderizados como links */
+a.filtro-btn,
+a.page-btn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+a.filtro-btn:hover,
+a.page-btn:hover { text-decoration: none; }
+
+/* Ícones SVG inline sem tamanho explícito herdam o tamanho da fonte */
+.footer-contact-item svg,
+.carousel-card-date svg,
+.carousel-card-link svg,
+.carousel-btn svg { flex-shrink: 0; }
+
+/* Conteúdo de páginas sem Elementor (editor de blocos) */
+.procon-conteudo > * + * { margin-top: var(--space-md); }
+.procon-conteudo ul,
+.procon-conteudo ol { padding-left: 1.5rem; }
+.procon-conteudo h2,
+.procon-conteudo h3 { color: var(--color-primary); }
+
+/* Corpo da notícia (HTML vindo do editor) */
+.noticia-body > * + * { margin-top: var(--space-md); }
+.noticia-body ul,
+.noticia-body ol { padding-left: 1.5rem; }
+
+/* Correção de um defeito do CSS de referência: inner-pages.css declara .pesquisa-card duas vezes
+   e a segunda (fundo branco) anula .pesquisa-card-ativa — o card selecionado ficava com texto branco
+   sobre fundo branco. */
+.pesquisa-card.pesquisa-card-ativa {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+/* Correção de um defeito do CSS de referência: em telas ≤ 600px, ".site-logo img { height: 44px }"
+   encolhe a imagem do logo e o recorte de 76px passa a mostrar parte do texto ("CON") ao lado do
+   brasão. Mantém a altura usada no recorte em todas as larguras. */
+@media (max-width: 600px) {
+  .site-logo .brasao-img { height: 72px; }
+}
+
+/* Lacuna do CSS de referência: os canais do topo de Contatos (Sede / Telefones / E-mail) ficavam
+   em 3 colunas no celular e estouravam a largura da tela. */
+.contato-canal-topo-item > div { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 900px) {
+  .contato-canais-topo { grid-template-columns: 1fr; }
+}
+
+/* Lacunas responsivas do CSS de referência no celular:
+   - itens de grid sem min-width: 0 crescem com o conteúdo (Serviços na Início);
+   - .btn tem white-space: nowrap e botões com texto longo estouram a tela (Transparência, SAC);
+   - .bio-layout (biografias) não tem regra para telas estreitas. */
+.servicos-grid > * { min-width: 0; }
+@media (max-width: 900px) {
+  .bio-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .btn { white-space: normal; text-align: center; }
+}
+
+/* Widget VLibras acima do cabeçalho fixo */
+[vw] { z-index: calc(var(--z-sticky) + 20) !important; }

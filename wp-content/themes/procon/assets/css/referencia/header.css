@@ -1,0 +1,484 @@
+/* ============================================================
+   PROCON PE — Header / Navegação
+   ============================================================ */
+
+/* ──────────────────────────────────────────────
+   1. BARRA GOVERNAMENTAL (topo)
+   ────────────────────────────────────────────── */
+.gov-bar {
+  background-color: var(--color-gov-bar);
+  color: rgba(255,255,255,.8);
+  font-size: var(--font-size-xs);
+  padding: 0.35rem 0;
+  position: relative;
+  z-index: var(--z-sticky);
+}
+
+.gov-bar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.gov-bar-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.gov-bar-links li {
+  border-right: 1px solid rgba(255,255,255,.2);
+}
+.gov-bar-links li:last-child { border-right: none; }
+
+.gov-bar-links a {
+  color: rgba(255,255,255,.8);
+  padding: 0.25rem 0.6rem;
+  display: block;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  text-decoration: none;
+}
+
+.gov-bar-links a:hover, .gov-bar-links a:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.gov-bar-access {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.access-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,.3);
+  color: rgba(255,255,255,.8);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+.access-btn:hover, .access-btn:focus {
+  background-color: rgba(255,255,255,.15);
+  color: #ffffff;
+  outline: none;
+}
+
+.access-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+/* ──────────────────────────────────────────────
+   2. HEADER PRINCIPAL
+   ────────────────────────────────────────────── */
+.site-header {
+  background-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem var(--container-pad);
+  max-width: var(--container-max);
+  margin: 0 auto;
+  gap: var(--space-md);
+}
+
+/* Logo */
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* Wrapper que recorta apenas a metade direita da imagem (onde está o brasão).
+   A imagem original tem ~50% de espaço em branco à esquerda. */
+.site-logo-brasao {
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  /* SEM border-radius, SEM background — apenas recorte */
+}
+
+/* mix-blend-mode: screen torna o branco transparente sobre fundo escuro,
+   revelando apenas as cores do brasão. */
+.brasao-img {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 72px;
+  width: auto;
+  /* Escala a imagem inteira mas posiciona só a metade direita no wrapper */
+  max-width: none;
+  mix-blend-mode: screen;
+  filter: brightness(1.1) saturate(1.1);
+}
+
+.site-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.site-logo-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.site-logo-subtitle {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,.75);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+/* ──────────────────────────────────────────────
+   3. MENU PRINCIPAL
+   ────────────────────────────────────────────── */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1.1rem 0.9rem;
+  color: rgba(255,255,255,.9);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: var(--font-primary);
+}
+
+.nav-link:hover, .nav-link:focus, .nav-link.active {
+  color: #ffffff;
+  background-color: rgba(255,255,255,.08);
+  border-bottom-color: var(--color-accent);
+  text-decoration: none;
+  outline: none;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+.nav-link .caret {
+  font-size: 10px;
+  margin-left: 2px;
+  transition: transform var(--transition-fast);
+}
+
+.nav-item.open .caret {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  min-width: 240px;
+  z-index: var(--z-dropdown);
+  list-style: none;
+  padding: var(--space-sm) 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity var(--transition-normal), transform var(--transition-normal), visibility var(--transition-normal);
+  border-top: 3px solid var(--color-secondary);
+}
+
+.nav-item.open .dropdown-menu,
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 0.6rem 1.2rem;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  transition: background-color var(--transition-fast), color var(--transition-fast), padding var(--transition-fast);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-menu li a:hover, .dropdown-menu li a:focus {
+  background-color: var(--color-bg);
+  color: var(--color-secondary);
+  border-left-color: var(--color-secondary);
+  padding-left: 1.5rem;
+  text-decoration: none;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--space-sm) 0;
+}
+
+/* Header search toggle */
+.header-search-btn {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-left: var(--space-sm);
+  transition: background-color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.header-search-btn:hover, .header-search-btn:focus {
+  background: rgba(255,255,255,.2);
+  outline: none;
+}
+
+.header-search-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ──────────────────────────────────────────────
+   4. MENU MOBILE
+   ────────────────────────────────────────────── */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: var(--space-sm);
+  flex-shrink: 0;
+  position: relative;
+  z-index: calc(var(--z-sticky) + 10);
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: transform var(--transition-normal), opacity var(--transition-fast);
+  transform-origin: center;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 7px);
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -7px);
+}
+
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* Mobile overlay */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: calc(var(--z-sticky) - 1);
+}
+
+/* ──────────────────────────────────────────────
+   5. HEADER SEARCH BAR (deslizante)
+   ────────────────────────────────────────────── */
+.header-search-bar {
+  background: var(--color-primary-dark);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--transition-slow), padding var(--transition-slow);
+}
+
+.header-search-bar.open {
+  max-height: 80px;
+  padding: var(--space-sm) 0;
+}
+
+.header-search-bar .container {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.header-search-bar .search-form {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ──────────────────────────────────────────────
+   6. RESPONSIVIDADE DO HEADER
+   ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .nav-link {
+    padding: 1.1rem 0.65rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-toggle { display: flex; }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100vh;
+    background: var(--color-primary-dark);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 5rem var(--space-md) var(--space-md);
+    overflow-y: auto;
+    z-index: var(--z-sticky);
+    transition: right var(--transition-slow);
+    box-shadow: -4px 0 20px rgba(0,0,0,.3);
+  }
+
+  .main-nav.open {
+    right: 0;
+  }
+
+  .mobile-nav-overlay.open {
+    display: block;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .nav-link {
+    padding: 0.9rem var(--space-md);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    border-left: 3px solid transparent;
+    font-size: var(--font-size-sm);
+    justify-content: space-between;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    border-bottom-color: rgba(255,255,255,.1);
+    border-left-color: var(--color-accent);
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    border-left: 3px solid var(--color-secondary);
+    background: rgba(255,255,255,.05);
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    display: none;
+    margin-left: var(--space-md);
+  }
+
+  .nav-item.open .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu li a {
+    color: rgba(255,255,255,.85);
+    padding: 0.5rem 1rem;
+    border-left: none;
+  }
+
+  .dropdown-menu li a:hover {
+    background: rgba(255,255,255,.08);
+    color: #ffffff;
+    padding-left: 1.2rem;
+  }
+
+  .header-search-btn { display: none; }
+
+  .gov-bar-links a {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-logo-text { display: none; }
+  .site-logo img { height: 44px; }
+  .gov-bar-links li:nth-child(n+4) { display: none; }
+}

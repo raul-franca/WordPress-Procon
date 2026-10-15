@@ -1,0 +1,114 @@
+/* ============================================================
+   PROCON PE — Variáveis CSS Globais
+   Paleta baseada no site oficial procon.pe.gov.br
+   ============================================================ */
+
+:root {
+  /* Cores Principais */
+  --color-primary:       #00295b;   /* Azul escuro institucional */
+  --color-primary-dark:  #001a3d;   /* Azul mais escuro (hover header) */
+  --color-primary-light: #003f8a;   /* Azul médio */
+
+  --color-secondary:     #0a7f8e;   /* Teal — botões, destaques */
+  --color-secondary-dark:#076470;   /* Teal escuro (hover) */
+  --color-secondary-light:#14b0c3;  /* Teal claro (bordas, ícones) */
+
+  --color-accent:        #00c2d4;   /* Ciano de destaque */
+
+  /* Neutros */
+  --color-white:         #ffffff;
+  --color-bg:            #f4f7fb;   /* Fundo levemente azulado */
+  --color-bg-section:    #eaf2f8;   /* Fundo de seções alternadas */
+  --color-text:          #222222;
+  --color-text-muted:    #555555;
+  --color-border:        #d0dce8;
+
+  /* Governamental */
+  --color-gov-bar:       #001830;   /* Barra do topo (links pe.gov.br) */
+
+  /* Alto Contraste (ativado via .alto-contraste no body) */
+  --hc-bg:               #000000;
+  --hc-text:             #ffff00;
+  --hc-link:             #00ff00;
+  --hc-border:           #ffffff;
+
+  /* Tipografia */
+  --font-primary:        'Roboto', 'Open Sans', Arial, sans-serif;
+  --font-size-base:      1rem;      /* 16px */
+  --font-size-sm:        0.875rem;  /* 14px */
+  --font-size-xs:        0.75rem;   /* 12px */
+  --font-size-lg:        1.125rem;  /* 18px */
+  --font-size-xl:        1.25rem;   /* 20px */
+  --font-size-2xl:       1.5rem;    /* 24px */
+  --font-size-3xl:       2rem;      /* 32px */
+  --font-size-hero:      2.5rem;    /* 40px */
+
+  /* Espaçamento */
+  --space-xs:    0.25rem;   /* 4px */
+  --space-sm:    0.5rem;    /* 8px */
+  --space-md:    1rem;      /* 16px */
+  --space-lg:    1.5rem;    /* 24px */
+  --space-xl:    2rem;      /* 32px */
+  --space-2xl:   3rem;      /* 48px */
+  --space-3xl:   4rem;      /* 64px */
+
+  /* Container */
+  --container-max:  1280px;
+  --container-pad:  1.25rem;
+
+  /* Bordas */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-pill: 9999px;
+
+  /* Sombras */
+  --shadow-sm:   0 1px 4px rgba(0,0,0,.10);
+  --shadow-md:   0 4px 16px rgba(0,41,91,.12);
+  --shadow-lg:   0 8px 32px rgba(0,41,91,.16);
+
+  /* Transições */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* Z-index */
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-modal:     1000;
+  --z-toast:     1100;
+}
+
+/* ============================================================
+   ALTO CONTRASTE
+   ============================================================ */
+.alto-contraste {
+  --color-primary:        #000000;
+  --color-primary-dark:   #000000;
+  --color-primary-light:  #111111;
+  --color-secondary:      #000000;
+  --color-secondary-dark: #000000;
+  --color-secondary-light:#ffff00;
+  --color-accent:         #00ff00;
+  --color-white:          #000000;
+  --color-bg:             #000000;
+  --color-bg-section:     #111111;
+  --color-text:           #ffff00;
+  --color-text-muted:     #ffffff;
+  --color-border:         #ffffff;
+  --color-gov-bar:        #000000;
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+.alto-contraste a {
+  color: #00ff00 !important;
+  text-decoration: underline !important;
+}
+
+.alto-contraste button,
+.alto-contraste .btn {
+  background: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}

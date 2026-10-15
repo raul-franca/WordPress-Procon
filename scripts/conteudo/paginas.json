@@ -1,0 +1,190 @@
+[
+ {
+  "slug": "inicio",
+  "titulo": "Início",
+  "resumo": "",
+  "pai": "",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "inicio/01-hero.html"
+   },
+   {
+    "tipo": "shortcode",
+    "shortcode": "[procon_noticias_carrossel quantidade=\"8\"]"
+   },
+   {
+    "tipo": "html",
+    "arquivo": "inicio/03-acesso-rapido.html"
+   },
+   {
+    "tipo": "html",
+    "arquivo": "inicio/04-servicos-contato.html"
+   },
+   {
+    "tipo": "html",
+    "arquivo": "inicio/05-orgaos.html"
+   },
+   {
+    "tipo": "html",
+    "arquivo": "inicio/06-youtube.html"
+   }
+  ]
+ },
+ {
+  "slug": "institucional",
+  "titulo": "Informações Institucionais",
+  "resumo": "Conheça o PROCON Pernambuco — sua história, estrutura e missão",
+  "pai": "",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "institucional/01-conteudo.html"
+   }
+  ]
+ },
+ {
+  "slug": "gerente-geral",
+  "titulo": "Gerente Geral",
+  "resumo": "PROCON Pernambuco / SJDH",
+  "pai": "institucional",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "gerente-geral/01-biografia.html"
+   }
+  ]
+ },
+ {
+  "slug": "secretario-executivo",
+  "titulo": "Secretário Executivo",
+  "resumo": "Secretaria de Justiça e Direitos Humanos — SJDH",
+  "pai": "institucional",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "secretario-executivo/01-biografia.html"
+   }
+  ]
+ },
+ {
+  "slug": "gerente-juridico",
+  "titulo": "Gerente Jurídico",
+  "resumo": "Gerência Jurídica — PROCON PE",
+  "pai": "institucional",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "gerente-juridico/01-biografia.html"
+   }
+  ]
+ },
+ {
+  "slug": "gerente-fiscalizacao",
+  "titulo": "Gerente de Fiscalização",
+  "resumo": "Gerência de Fiscalização — PROCON PE",
+  "pai": "institucional",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "gerente-fiscalizacao/01-biografia.html"
+   }
+  ]
+ },
+ {
+  "slug": "gerente-atendimento",
+  "titulo": "Gerente de Atendimento",
+  "resumo": "Gerência de Atendimento — PROCON PE",
+  "pai": "institucional",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "gerente-atendimento/01-biografia.html"
+   }
+  ]
+ },
+ {
+  "slug": "legislacao",
+  "titulo": "Competências e Legislação",
+  "resumo": "Base legal que orienta a atuação do PROCON Pernambuco na defesa dos direitos do consumidor",
+  "pai": "",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "legislacao/01-conteudo.html"
+   }
+  ]
+ },
+ {
+  "slug": "acessibilidade",
+  "titulo": "Acessibilidade",
+  "resumo": "Recursos e funcionalidades para uma navegação mais inclusiva",
+  "pai": "",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "acessibilidade/01-conteudo.html"
+   }
+  ]
+ },
+ {
+  "slug": "mapa-do-site",
+  "titulo": "Mapa do Site",
+  "resumo": "Visão geral de todas as páginas e seções do portal PROCON Pernambuco",
+  "pai": "",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "mapa-do-site/01-conteudo.html"
+   }
+  ]
+ },
+ {
+  "slug": "transparencia",
+  "titulo": "Portal da Transparência",
+  "resumo": "Acesso às informações públicas do PROCON Pernambuco, conforme a Lei de Acesso à Informação (Lei 12.527/2011)",
+  "pai": "",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "transparencia/01-conteudo.html"
+   }
+  ]
+ },
+ {
+  "slug": "contatos",
+  "titulo": "Fale Conosco",
+  "resumo": "Sede, postos Expresso Cidadão e unidades municipais em todo o Estado de Pernambuco",
+  "pai": "",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "contatos/01-conteudo.html"
+   }
+  ]
+ },
+ {
+  "slug": "pesquisa-de-precos",
+  "titulo": "Pesquisa de Preços",
+  "resumo": "Consulte as pesquisas realizadas pelo PROCON PE e compre com mais segurança. Visualize os dados diretamente ou faça o download.",
+  "pai": "",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "pesquisa-de-precos/01-conteudo.html"
+   }
+  ]
+ },
+ {
+  "slug": "ranking-de-reclamacoes",
+  "titulo": "Ranking de Reclamações",
+  "resumo": "Empresas com maior número de reclamações registradas no PROCON PE",
+  "pai": "",
+  "secoes": [
+   {
+    "tipo": "html",
+    "arquivo": "ranking-de-reclamacoes/01-conteudo.html"
+   }
+  ]
+ }
+]

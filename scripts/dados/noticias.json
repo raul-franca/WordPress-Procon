@@ -1,0 +1,74 @@
+[
+ {
+  "id": 1,
+  "titulo": "PROCON PE lança campanha de orientação ao consumidor na Black Friday 2026",
+  "resumo": "O PROCON Pernambuco inicia campanha educativa para orientar consumidores sobre direitos nas compras da Black Friday, com dicas de pesquisa de preços e alertas sobre fraudes.",
+  "conteudo": "O PROCON Pernambuco inicia nesta semana uma campanha educativa voltada para o período da Black Friday 2026. A ação tem como objetivo orientar os consumidores sobre seus direitos durante as compras online e presenciais, destacando cuidados com promoções enganosas, direito de arrependimento em compras pela internet e a obrigatoriedade da emissão de nota fiscal em todas as operações comerciais.",
+  "categoria": "Campanhas",
+  "publicado_em": "2026-09-15T09:00:00-03:00",
+  "imagem": "photo-1607082348824-0a96f2a4b9da"
+ },
+ {
+  "id": 2,
+  "titulo": "Pesquisa de preços do gás de cozinha é atualizada na Região Metropolitana do Recife",
+  "resumo": "O PROCON PE divulga novo levantamento de preços do botijão de gás GLP 13kg em mais de 50 revendedoras autorizadas em Pernambuco.",
+  "conteudo": "A nova pesquisa do PROCON Pernambuco apurou os preços do gás de cozinha em mais de 50 estabelecimentos da Região Metropolitana do Recife. Foram encontradas variações de até 22% entre diferentes bairros e bandeiras de distribuição, reforçando a importância do consumidor pesquisar antes de solicitar a entrega em domicílio.",
+  "categoria": "Pesquisa de Preços",
+  "publicado_em": "2026-09-12T10:30:00-03:00",
+  "imagem": "photo-1585829365295-ab7cd400c167"
+ },
+ {
+  "id": 3,
+  "titulo": "Ranking de Reclamações: telecomunicações e serviços financeiros lideram no Estado",
+  "resumo": "Empresas de telefonia, internet e bancos continuam no topo do índice de reclamações registradas no PROCON PE durante o período apurado.",
+  "conteudo": "O PROCON Pernambuco divulga o ranking consolidado de atendimentos. As operadoras de telefonia e as instituições financeiras mantêm a maior concentração de queixas, principalmente relacionadas a cobranças indevidas, falha na entrega de velocidade contratada e dificuldades no cancelamento de serviços.",
+  "categoria": "Ranking",
+  "publicado_em": "2026-09-10T08:00:00-03:00",
+  "imagem": "photo-1551836022-d5d88e9218df"
+ },
+ {
+  "id": 4,
+  "titulo": "PROCON PE realiza mutirão especial de atendimento ao consumidor na sede",
+  "resumo": "Ação especial oferece atendimento presencial gratuito na sede histórica da Rua Floriano Peixoto para mediação rápida de pendências.",
+  "conteudo": "O PROCON Pernambuco realizou uma força-tarefa de atendimento presencial em sua sede histórica, no bairro de Santo Antônio, no Recife. Foram realizadas centenas de audiências de conciliação com índices de acordo superiores a 78%, garantindo agilidade sem necessidade de judicialização de demandas.",
+  "categoria": "Atendimento",
+  "publicado_em": "2026-09-08T11:00:00-03:00",
+  "imagem": "photo-1450133064473-71024230f91b"
+ },
+ {
+  "id": 5,
+  "titulo": "Integração com Reclama Procon e Consumidor.gov.br amplia resolutividade",
+  "resumo": "Cidadãos pernambucanos contam com registro 100% digital de reclamações através dos sistemas integrados do Governo de Pernambuco.",
+  "conteudo": "A integração tecnológica entre as plataformas estaduais e federais possibilita que os consumidores abram processos e denúncias com comodidade pela internet, acompanhando cada protocolo em tempo real até a resposta oficial dos fornecedores notificados.",
+  "categoria": "Notícias",
+  "publicado_em": "2026-09-05T14:00:00-03:00",
+  "imagem": "photo-1460925895917-afdab827c52f"
+ },
+ {
+  "id": 6,
+  "titulo": "Nota Técnica orienta fornecedores sobre clareza de preços e acessibilidade",
+  "resumo": "Documento orientador estabelece critérios para exibição visível de preços fracionados, formas de pagamento e atendimento prioritário.",
+  "conteudo": "A Gerência Jurídica do PROCON Pernambuco publicou nota técnica orientando o comércio varejista quanto à obrigatoriedade de disponibilização clara dos preços à vista e a prazo, além do cumprimento integral das normas de acessibilidade para pessoas com deficiência e idosos.",
+  "categoria": "Notas Técnicas",
+  "publicado_em": "2026-09-03T09:30:00-03:00",
+  "imagem": "photo-1454165804606-c3d57bc86b40"
+ },
+ {
+  "id": 7,
+  "titulo": "Pesquisa da Cesta Básica registra estabilidade de preços nos supermercados",
+  "resumo": "Levantamento detalhado comparou os valores de 27 itens de alimentação, limpeza e higiene pessoal em estabelecimentos da RMR.",
+  "conteudo": "O levantamento mensal dos itens da cesta básica apontou pequenas variações no grupo de hortifrúti e estabilidade nos produtos industrializados de primeira necessidade. O relatório completo pode ser consultado diretamente na seção de pesquisas do site.",
+  "categoria": "Pesquisa de Preços",
+  "publicado_em": "2026-09-01T10:00:00-03:00",
+  "imagem": "photo-1542838132-92c53300491e"
+ },
+ {
+  "id": 8,
+  "titulo": "PROCON PE firma acordo de cooperação técnica para expansão do atendimento no interior",
+  "resumo": "Novas unidades conveniadas aos Expressos Cidadão permitirão ampliação dos serviços de acolhimento aos consumidores no Agreste e Sertão.",
+  "conteudo": "A Secretaria de Justiça e Direitos Humanos e o PROCON Pernambuco formalizaram termos de cooperação com prefeituras municipais para instalar novos pontos de atendimento ao cidadão no Agreste Central e Sertão do Pajeú, descentralizando a atuação do órgão.",
+  "categoria": "Institucional",
+  "publicado_em": "2026-08-28T15:00:00-03:00",
+  "imagem": "photo-1497366216548-37526070297c"
+ }
+]

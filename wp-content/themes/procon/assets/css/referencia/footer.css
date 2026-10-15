@@ -1,0 +1,318 @@
+/* ============================================================
+   PROCON PE — Footer
+   ============================================================ */
+
+.site-footer {
+  background: var(--color-primary-dark);
+  color: rgba(255,255,255,.85);
+  margin-top: auto;
+}
+
+/* Bloco superior */
+.footer-main {
+  padding: var(--space-2xl) 0 var(--space-xl);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+/* Coluna de identidade */
+.footer-brand .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  text-decoration: none;
+}
+
+/* Brasão no footer — mesmo recorte do header */
+.footer-logo-brasao {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.brasao-img-footer {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 48px;
+  width: auto;
+  max-width: none;
+  mix-blend-mode: screen;
+  filter: brightness(1.1) saturate(1.1);
+}
+
+.footer-brand .footer-logo img {
+  height: 52px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: .85;
+}
+
+.footer-brand .footer-logo-text {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.footer-brand p {
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  color: rgba(255,255,255,.7);
+  margin-bottom: var(--space-md);
+}
+
+/* Contato no footer */
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: rgba(255,255,255,.8);
+}
+
+.footer-contact-item svg {
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-secondary-light);
+}
+
+.footer-contact-item a {
+  color: rgba(255,255,255,.8);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-contact-item a:hover {
+  color: #ffffff;
+}
+
+/* Colunas de links */
+.footer-col-title {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer-links li a {
+  color: rgba(255,255,255,.7);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+  display: block;
+  padding: 0.15rem 0;
+}
+
+.footer-links li a:hover, .footer-links li a:focus {
+  color: #ffffff;
+  padding-left: 0.4rem;
+  text-decoration: none;
+}
+
+/* Lista compacta para coluna Inf. Institucionais */
+.footer-links-dense {
+  gap: 0.2rem;
+}
+
+.footer-links-dense li a {
+  font-size: 0.8rem;
+  padding: 0.08rem 0;
+  color: rgba(255,255,255,.75);
+}
+
+.footer-links-dense li a:hover {
+  color: var(--color-accent);
+}
+
+/* Redes sociais */
+.footer-social {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.footer-social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  font-size: 1rem;
+}
+
+.footer-social-btn:hover, .footer-social-btn:focus {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-social-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Órgãos federais */
+.footer-federal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.footer-federal a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,.65);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem 0.7rem;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.footer-federal a:hover, .footer-federal a:focus {
+  background: rgba(255,255,255,.1);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Bloco inferior (copyright) */
+.footer-bottom {
+  padding: var(--space-md) 0;
+  background: rgba(0,0,0,.2);
+}
+
+.footer-bottom .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.footer-copyright {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,.55);
+  line-height: 1.5;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,.55);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-bottom-links a:hover {
+  color: #ffffff;
+}
+
+/* Faixa de acesso rápido no topo do footer */
+.footer-top-bar {
+  background: var(--color-secondary);
+  padding: var(--space-md) 0;
+}
+
+.footer-top-bar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.footer-top-bar p {
+  color: #ffffff;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.footer-top-bar-links {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.footer-top-bar-links a {
+  color: #ffffff;
+  background: rgba(255,255,255,.15);
+  border-radius: var(--radius-md);
+  padding: 0.4rem 0.9rem;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+}
+
+.footer-top-bar-links a:hover, .footer-top-bar-links a:focus {
+  background: rgba(255,255,255,.25);
+  text-decoration: none;
+}
+
+/* ──────────────────────────────────────────────
+   RESPONSIVIDADE
+   ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-brand {
+    grid-column: auto;
+  }
+  .footer-bottom .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-top-bar .container {
+    flex-direction: column;
+    text-align: center;
+  }
+}

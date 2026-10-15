@@ -1,0 +1,188 @@
+<section class="section">
+  <div class="container">
+    <div class="contato-canais-topo" aria-label="Canais de atendimento rápido">
+      <div class="contato-canal-topo-item">
+        <span aria-hidden="true">📍</span>
+        <div>
+          <strong>Sede</strong>
+          <span>Rua Floriano Peixoto, 141, Santo Antônio — CEP: 50.020-065 / Recife/PE</span>
+        </div>
+      </div>
+      <div class="contato-canal-topo-item">
+        <span aria-hidden="true">📞</span>
+        <div>
+          <strong>Telefones</strong>
+          <span><a href="tel:08002821512">0800-282-1512</a> / <a href="tel:+558131817000">3181-7000</a></span>
+        </div>
+      </div>
+      <div class="contato-canal-topo-item">
+        <span aria-hidden="true">✉️</span>
+        <div>
+          <strong>E-mail</strong>
+          <span><a href="mailto:denuncia@procon.pe.gov.br">denuncia@procon.pe.gov.br</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="postos-filtros" role="group" aria-label="Filtrar por tipo de posto">
+      <button type="button" class="filtro-btn active" data-filtro="todos" aria-pressed="true">Todos</button>
+      <button type="button" class="filtro-btn" data-filtro="sede" aria-pressed="false">🏛️ Sede</button>
+      <button type="button" class="filtro-btn" data-filtro="expresso" aria-pressed="false">🚀 Expresso Cidadão</button>
+      <button type="button" class="filtro-btn" data-filtro="municipio" aria-pressed="false">🏙️ Municípios</button>
+    </div>
+    <div class="table-responsive contato-table-wrapper" role="region" aria-label="Tabela de postos de atendimento" tabindex="0">
+      <table class="contato-table" aria-label="Postos de Atendimento do PROCON PE">
+        <thead>
+          <tr>
+            <th scope="col">Cidade</th>
+            <th scope="col">Unidade</th>
+            <th scope="col">Tipo de Vínculo</th>
+            <th scope="col">Responsável / Coordenador</th>
+            <th scope="col">Telefone / E-mail</th>
+            <th scope="col">Endereço Completo</th>
+            <th scope="col">Horário de Funcionamento</th>
+          </tr>
+        </thead>
+        <tbody>
+                    <tr class="row-sede" data-tipo="sede">
+            <td data-label="Cidade"><strong>Recife</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">SEDE</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-sede"><span>SEDE</span></span></td>
+            <td data-label="Responsável"><span><strong>Gerente Geral</strong><br></span></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8131817000" class="contato-tel">📞 (81) 3181-7000</a></div><div><a href="tel:08002821512" class="contato-tel">📞 0800 282 1512</a></div><div><a href="mailto:denuncia@procon.pe.gov.br" class="contato-email">✉ denuncia@procon.pe.gov.br</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Rua Floriano Peixoto, nº 141, Santo Antônio<br><span>CEP 50020-060</span><span style="display:block;font-size:var(--font-size-xs);color:var(--color-text-muted);margin-top:.25rem">📌 Em frente à Casa da Cultura</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">08h às 17h</span></td>
+          </tr>
+          <tr class="row-expresso" data-tipo="expresso">
+            <td data-label="Cidade"><strong>Recife</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">AEROPORTO INTERNACIONAL DO RECIFE / GUARARAPES</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-expresso"><span>EXPRESSO CIDADÃO</span></span></td>
+            <td data-label="Responsável"><span style="font-size:var(--font-size-xs);color:var(--color-text-muted)">Coordenador: Antônio Carlos</span></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8131817049" class="contato-tel">📞 (81) 3181-7049</a></div><div><a href="mailto:proconaeroportorec@gmail.com" class="contato-email">✉ proconaeroportorec@gmail.com</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Aeroporto Internacional do Recife/Guararapes, Praça Ministro Salgado Filho, s/n, Térreo, Imbiribeira<br><span>CEP 51210-902</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">08h às 17h</span></td>
+          </tr>
+          <tr class="row-expresso" data-tipo="expresso">
+            <td data-label="Cidade"><strong>Garanhuns</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">EXPRESSO GARANHUNS</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-expresso"><span>EXPRESSO CIDADÃO</span></span></td>
+            <td data-label="Responsável"><span style="font-size:var(--font-size-xs);color:var(--color-text-muted)">Coordenadora: Wilksonita Gonçalves</span></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8137611871" class="contato-tel">📞 (81) 3761-1871</a></div><div><a href="mailto:expresso.garanhuns@procon.pe.gov.br" class="contato-email">✉ expresso.garanhuns@procon.pe.gov.br</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">AVENIDA LIONS, 305, BAIRRO ALUÍSIO PINTO<br><span>CEP 55292-060</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">8h às 20h (seg a sex) e 8h às 14h (sábado)</span></td>
+          </tr>
+          <tr class="row-expresso" data-tipo="expresso">
+            <td data-label="Cidade"><strong>Recife</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">EXPRESSO SHOPPING BOA VISTA</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-expresso"><span>EXPRESSO CIDADÃO</span></span></td>
+            <td data-label="Responsável"><span style="font-size:var(--font-size-xs);color:var(--color-text-muted)">Mariângela Mª de Oliveira</span></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8131838049" class="contato-tel">📞 (81) 3183-8049</a></div><div><a href="mailto:expressoboavista@procon.pe.gov.br" class="contato-email">✉ expressoboavista@procon.pe.gov.br</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Shopping Boa Vista, Rua do Giriquiti, 48, Boa Vista<br><span>CEP 50070-010</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">08h às 12h</span></td>
+          </tr>
+          <tr class="row-expresso" data-tipo="expresso">
+            <td data-label="Cidade"><strong>Olinda</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">EXPRESSO SHOPPING PATTEO OLINDA</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-expresso"><span>EXPRESSO CIDADÃO</span></span></td>
+            <td data-label="Responsável"><span style="font-size:var(--font-size-xs);color:var(--color-text-muted)">Nildete Rabelo</span></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8131838109" class="contato-tel">📞 (81) 3183-8109</a></div><div><a href="tel:8134393186" class="contato-tel">📞 (81) 3439-3186</a></div><div><a href="mailto:expresso.olinda@procon.pe.gov.br" class="contato-email">✉ expresso.olinda@procon.pe.gov.br</a></div><div><a href="mailto:proconolinda@hotmail.com" class="contato-email">✉ proconolinda@hotmail.com</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Shopping Patteo Olinda, Rua Carmelita Soares de Araújo, nº 225, L4, Loja 5018 – Casa Caiada<br><span>CEP 53130-150</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">8h às 20h (seg a sex) e 8h às 14h (sábado)</span></td>
+          </tr>
+          <tr class="row-expresso" data-tipo="expresso">
+            <td data-label="Cidade"><strong>Recife</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">EXPRESSO SHOPPING RIOMAR</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-expresso"><span>EXPRESSO CIDADÃO</span></span></td>
+            <td data-label="Responsável"><span style="font-size:var(--font-size-xs);color:var(--color-text-muted)">Coordenador Local</span></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8131838115" class="contato-tel">📞 (81) 3183-8115</a></div><div><a href="mailto:expressoriomar@procon.pe.gov.br" class="contato-email">✉ expressoriomar@procon.pe.gov.br</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Shopping RioMar, Av. República do Líbano, 251, Pina<br><span>CEP 51110-160</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">8h às 20h (seg a sex) e 8h às 14h (sábado)</span></td>
+          </tr>
+          <tr class="row-expresso" data-tipo="expresso">
+            <td data-label="Cidade"><strong>Caruaru</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">EXPRESSO CIDADÃO CARUARU</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-expresso"><span>EXPRESSO CIDADÃO</span></span></td>
+            <td data-label="Responsável"><span style="font-size:var(--font-size-xs);color:var(--color-text-muted)">Equipe de Atendimento</span></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8137268982" class="contato-tel">📞 (81) 3726-8982</a></div><div><a href="mailto:expressocaruaru@procon.pe.gov.br" class="contato-email">✉ expressocaruaru@procon.pe.gov.br</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Shopping Difusora, Av. Agamenon Magalhães, 444, Maurício de Nassau<br><span>CEP 55012-290</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">8h às 20h (seg a sex) e 8h às 14h (sábado)</span></td>
+          </tr>
+          <tr class="row-expresso" data-tipo="expresso">
+            <td data-label="Cidade"><strong>Petrolina</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">EXPRESSO CIDADÃO PETROLINA</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-expresso"><span>EXPRESSO CIDADÃO</span></span></td>
+            <td data-label="Responsável"><span style="font-size:var(--font-size-xs);color:var(--color-text-muted)">Coordenação Regional</span></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8738666731" class="contato-tel">📞 (87) 3866-6731</a></div><div><a href="mailto:expressopetrolina@procon.pe.gov.br" class="contato-email">✉ expressopetrolina@procon.pe.gov.br</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">River Shopping, Av. Monsenhor Ângelo Sampaio, 100, Centro<br><span>CEP 56304-920</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">8h às 20h (seg a sex) e 8h às 14h (sábado)</span></td>
+          </tr>
+          <tr class="row-municipio" data-tipo="municipio">
+            <td data-label="Cidade"><strong>Afogados da Ingazeira</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">PROCON Afogados da Ingazeira</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-municipio"><span>MUNICÍPIO</span></span></td>
+            <td data-label="Responsável"></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8738381524" class="contato-tel">📞 (87) 3838-1524</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Rua Dr. Nogueira Lima, s/n, Centro<br><span>CEP 56800-000</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">08h às 14h</span></td>
+          </tr>
+          <tr class="row-municipio" data-tipo="municipio">
+            <td data-label="Cidade"><strong>Araripina</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">PROCON Araripina</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-municipio"><span>MUNICÍPIO</span></span></td>
+            <td data-label="Responsável"></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8736751377" class="contato-tel">📞 (87) 3675-1377</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Rua Coelho Rodrigues, 275, Centro<br><span>CEP 56280-000</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">08h às 14h</span></td>
+          </tr>
+          <tr class="row-municipio" data-tipo="municipio">
+            <td data-label="Cidade"><strong>Arcoverde</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">PROCON Arcoverde</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-municipio"><span>MUNICÍPIO</span></span></td>
+            <td data-label="Responsável"></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8738212292" class="contato-tel">📞 (87) 3821-2292</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Av. Antônio Japiassu, 771, Centro<br><span>CEP 56506-100</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">08h às 14h</span></td>
+          </tr>
+          <tr class="row-municipio" data-tipo="municipio">
+            <td data-label="Cidade"><strong>Belo Jardim</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">PROCON Belo Jardim</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-municipio"><span>MUNICÍPIO</span></span></td>
+            <td data-label="Responsável"></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8137261188" class="contato-tel">📞 (81) 3726-1188</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Praça Des. João Paes, s/n, Centro<br><span>CEP 55150-650</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">08h às 13h</span></td>
+          </tr>
+          <tr class="row-municipio" data-tipo="municipio">
+            <td data-label="Cidade"><strong>Gravatá</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">PROCON Gravatá</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-municipio"><span>MUNICÍPIO</span></span></td>
+            <td data-label="Responsável"></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8135639024" class="contato-tel">📞 (81) 3563-9024</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Rua João Pessoa, 44, Centro<br><span>CEP 55641-120</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">08h às 14h</span></td>
+          </tr>
+          <tr class="row-municipio" data-tipo="municipio">
+            <td data-label="Cidade"><strong>Igarassu</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">PROCON Igarassu</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-municipio"><span>MUNICÍPIO</span></span></td>
+            <td data-label="Responsável"></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8135432605" class="contato-tel">📞 (81) 3543-2605</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Av. Duarte Coelho Pereira, 151, Loja 2<br><span>CEP 53605-030</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">08h às 14h</span></td>
+          </tr>
+          <tr class="row-municipio" data-tipo="municipio">
+            <td data-label="Cidade"><strong>Fernando de Noronha</strong></td>
+            <td data-label="Unidade"><span class="posto-unidade-nome">PROCON Fernando de Noronha</span></td>
+            <td data-label="Tipo de Vínculo"><span class="badge-tipo badge-municipio"><span>MUNICÍPIO</span></span></td>
+            <td data-label="Responsável"></td>
+            <td data-label="Telefone / E-mail"><div><a href="tel:8136190856" class="contato-tel">📞 (81) 3619-0856</a></div></td>
+            <td data-label="Endereço"><address style="font-style:normal;line-height:1.6">Rodovia Miguel Arraes, 437, BR 263<br><span>CEP 53990-000</span></address></td>
+            <td data-label="Horário"><span class="horario-badge">08h às 14h</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-muted" style="font-size:var(--font-size-sm);margin-top:var(--space-lg);text-align:center">
+      * Horários sujeitos a alteração. Em caso de dúvidas, entre em contato pelo <strong>0800-282-1512</strong>.
+    </p>
+  </div>
+</section>

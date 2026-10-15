@@ -1,19 +1,25 @@
 <?php
 /**
  * Tema filho PROCON Pernambuco (base: Hello Elementor).
+ *
+ * O visual vem do CSS da página de referência (assets/css/referencia/), carregado sem
+ * alterações; assets/css/wp-ajustes.css concentra as adaptações ao WordPress/Elementor.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PROCON_THEME_VERSION', '1.0.0' );
+define( 'PROCON_THEME_VERSION', '2.0.0' );
 
 require_once __DIR__ . '/inc/icons.php';
 require_once __DIR__ . '/inc/customizer.php';
+require_once __DIR__ . '/inc/class-procon-nav-walker.php';
+require_once __DIR__ . '/inc/template-tags.php';
+require_once __DIR__ . '/inc/shortcodes.php';
 
 /**
- * Suportes do tema: logo personalizado e menus.
+ * Suportes do tema e posições de menu.
  */
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'custom-logo', array(
@@ -22,31 +28,51 @@ add_action( 'after_setup_theme', function () {
 		'flex-height' => true,
 		'flex-width'  => true,
 	) );
+	add_theme_support( 'post-thumbnails' );
+	add_post_type_support( 'page', 'excerpt' ); // O resumo da página vira o subtítulo do cabeçalho.
 
 	register_nav_menus( array(
-		'procon-principal' => 'Menu principal (cabeçalho)',
+		'procon-principal'      => 'Menu principal (cabeçalho)',
+		'procon-gov-bar'        => 'Barra do governo (topo)',
+		'procon-rodape-servicos' => 'Rodapé — Serviços',
+		'procon-rodape-inst'    => 'Rodapé — Inf. Institucionais',
+		'procon-rodape-orgaos'  => 'Rodapé — Órgãos Parceiros',
+		'procon-rodape-base'    => 'Rodapé — Links inferiores',
 	) );
 }, 20 );
 
 /**
- * Fontes e estilos. Ordem: Roboto -> tokens -> base -> cabeçalho -> rodapé.
+ * O CSS de referência já traz reset, tipografia e layout: desliga o CSS do Hello Elementor.
+ */
+add_filter( 'hello_elementor_enqueue_style', '__return_false' );
+add_filter( 'hello_elementor_enqueue_theme_style', '__return_false' );
+add_filter( 'hello_elementor_header_footer', '__return_false' );
+
+/**
+ * Estilos e scripts. A versão é a data de modificação do arquivo (invalida cache a cada edição).
  */
 add_action( 'wp_enqueue_scripts', function () {
 	$uri = get_stylesheet_directory_uri() . '/assets';
 	$dir = get_stylesheet_directory() . '/assets';
-	// Versão = data de modificação do arquivo: qualquer edição invalida o cache do navegador.
 	$ver = function ( $file ) use ( $dir ) {
 		return (string) ( @filemtime( $dir . $file ) ?: PROCON_THEME_VERSION );
 	};
 
-	wp_enqueue_style( 'procon-roboto', 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap', array(), null );
-	wp_enqueue_style( 'procon-variables', $uri . '/css/variables.css', array(), $ver( '/css/variables.css' ) );
-	wp_enqueue_style( 'procon-global', $uri . '/css/global.css', array( 'procon-variables', 'hello-elementor' ), $ver( '/css/global.css' ) );
-	wp_enqueue_style( 'procon-header', $uri . '/css/header.css', array( 'procon-global' ), $ver( '/css/header.css' ) );
-	wp_enqueue_style( 'procon-footer', $uri . '/css/footer.css', array( 'procon-global' ), $ver( '/css/footer.css' ) );
-	wp_enqueue_style( 'procon-home', $uri . '/css/home.css', array( 'procon-global' ), $ver( '/css/home.css' ) );
+	wp_enqueue_style( 'procon-fontes', 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap', array(), null );
 
-	wp_enqueue_script( 'procon-acessibilidade', $uri . '/js/acessibilidade.js', array(), $ver( '/js/acessibilidade.js' ), array( 'strategy' => 'defer' ) );
+	// Mesma ordem do <head> da página de referência.
+	$deps = array( 'procon-fontes' );
+	foreach ( array( 'variables', 'global', 'header', 'carousel', 'footer', 'home', 'inner-pages' ) as $css ) {
+		$file = '/css/referencia/' . $css . '.css';
+		wp_enqueue_style( 'procon-' . $css, $uri . $file, $deps, $ver( $file ) );
+		$deps = array( 'procon-' . $css );
+	}
+	wp_enqueue_style( 'procon-wp-ajustes', $uri . '/css/wp-ajustes.css', $deps, $ver( '/css/wp-ajustes.css' ) );
+
+	wp_enqueue_script( 'procon', $uri . '/js/procon.js', array(), $ver( '/js/procon.js' ), array( 'in_footer' => true ) );
+	if ( is_front_page() ) {
+		wp_enqueue_script( 'procon-carousel', $uri . '/js/carousel.js', array(), $ver( '/js/carousel.js' ), array( 'in_footer' => true ) );
+	}
 
 	if ( get_theme_mod( 'procon_vlibras', true ) ) {
 		wp_enqueue_script( 'vlibras', 'https://vlibras.gov.br/app/vlibras-plugin.js', array(), null, array( 'in_footer' => true ) );
@@ -54,9 +80,6 @@ add_action( 'wp_enqueue_scripts', function () {
 	}
 }, 20 );
 
-/**
- * Preconnect para o Google Fonts.
- */
 add_filter( 'wp_resource_hints', function ( $urls, $relation ) {
 	if ( 'preconnect' === $relation ) {
 		$urls[] = 'https://fonts.googleapis.com';
@@ -66,14 +89,41 @@ add_filter( 'wp_resource_hints', function ( $urls, $relation ) {
 }, 10, 2 );
 
 /**
- * Aplica a classe de alto contraste antes da renderização (evita "piscar").
+ * Metadados da página de referência.
  */
 add_action( 'wp_head', function () {
-	echo "<script>try{if(localStorage.getItem('procon-contraste')==='1'){document.documentElement.classList.add('alto-contraste');}var f=localStorage.getItem('procon-fonte');if(f){document.documentElement.style.fontSize=f+'%';}}catch(e){}</script>\n";
-}, 1 );
+	echo '<meta name="theme-color" content="#00295b">' . "\n";
+	if ( is_front_page() ) {
+		echo '<meta name="description" content="' . esc_attr( 'PROCON Pernambuco — Proteção e Defesa do Consumidor. Pesquisa de preços, ranking de reclamações, notícias e atendimento ao cidadão.' ) . '">' . "\n";
+	}
+}, 2 );
 
 /**
- * URL do logo: usa o logo personalizado (Personalizar > Identidade do site) ou o do tema.
+ * Notícias: 6 por página (como na referência) e busca restrita às notícias.
+ */
+add_action( 'pre_get_posts', function ( WP_Query $query ) {
+	if ( is_admin() || ! $query->is_main_query() ) {
+		return;
+	}
+	if ( $query->is_home() || $query->is_category() || $query->is_search() ) {
+		$query->set( 'posts_per_page', 6 );
+	}
+	if ( $query->is_search() ) {
+		$query->set( 'post_type', 'post' );
+	}
+} );
+
+/**
+ * Cabeçalho das páginas internas (breadcrumb + faixa com título) também nas páginas do Elementor.
+ */
+add_action( 'elementor/page_templates/header-footer/before_content', function () {
+	if ( is_page() && ! is_front_page() ) {
+		procon_page_header();
+	}
+} );
+
+/**
+ * URL do logo: o definido em Personalizar > Identidade do site ou o do tema.
  */
 function procon_logo_url() {
 	$logo_id = get_theme_mod( 'custom_logo' );
