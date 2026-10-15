@@ -36,6 +36,28 @@ services:
       WORDPRESS_TABLE_PREFIX: ${WP_TABLE_PREFIX:-wp_}
     volumes:
       - ./data/wordpress:/var/www/html
+      - ./wp-content/themes/procon:/var/www/html/wp-content/themes/procon
+    networks:
+      - procon
+
+  # WP-CLI sob demanda: docker compose run --rm wpcli <comando>
+  wpcli:
+    image: wordpress:cli
+    profiles: ["cli"]
+    user: "33:33"
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_TABLE_PREFIX: ${WP_TABLE_PREFIX:-wp_}
+      WP_CLI_CACHE_DIR: /tmp/wp-cli-cache
+    volumes:
+      - ./data/wordpress:/var/www/html
+      - ./wp-content/themes/procon:/var/www/html/wp-content/themes/procon
+      - ./:/project:ro
     networks:
       - procon
 
