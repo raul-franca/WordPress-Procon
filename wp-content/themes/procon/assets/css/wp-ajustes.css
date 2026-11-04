@@ -57,13 +57,6 @@ a.page-btn:hover { text-decoration: none; }
   border-color: var(--color-secondary);
 }
 
-/* Correção de um defeito do CSS de referência: em telas ≤ 600px, ".site-logo img { height: 44px }"
-   encolhe a imagem do logo e o recorte de 76px passa a mostrar parte do texto ("CON") ao lado do
-   brasão. Mantém a altura usada no recorte em todas as larguras. */
-@media (max-width: 600px) {
-  .site-logo .brasao-img { height: 72px; }
-}
-
 /* Lacuna do CSS de referência: os canais do topo de Contatos (Sede / Telefones / E-mail) ficavam
    em 3 colunas no celular e estouravam a largura da tela. */
 .contato-canal-topo-item > div { min-width: 0; overflow-wrap: anywhere; }

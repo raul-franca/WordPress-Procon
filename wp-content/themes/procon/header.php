@@ -1,14 +1,14 @@
 <?php
 /**
- * Cabeçalho: barra do governo, controles de acessibilidade, logo, menu principal e busca.
- * Markup idêntico ao index.html da página de referência.
+ * Cabeçalho: barra do governo, controles de acessibilidade, logos institucionais (PROCON PE + SJDH/PE), menu principal e busca.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$procon_home = is_front_page();
+$procon_home    = is_front_page();
+$procon_img_uri = get_stylesheet_directory_uri() . '/assets/img';
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -66,13 +66,7 @@ try {
 <header class="site-header" role="banner">
   <div class="header-inner">
     <a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="PROCON Pernambuco — Página inicial">
-      <div class="site-logo-brasao" aria-hidden="true">
-        <img src="<?php echo esc_url( procon_logo_url() ); ?>" alt="" class="brasao-img" onerror="this.parentElement.style.display='none'">
-      </div>
-      <div class="site-logo-text">
-        <span class="site-logo-title">PROCON PE</span>
-        <span class="site-logo-subtitle">Governo de Pernambuco</span>
-      </div>
+      <img src="<?php echo esc_url( $procon_img_uri . '/logo-procon-pe.png' ); ?>" alt="PROCON Pernambuco" class="logo-procon-img">
     </a>
 
     <nav class="main-nav" id="main-nav" role="navigation" aria-label="Menu principal">
@@ -88,12 +82,17 @@ try {
       ?>
     </nav>
 
-    <div class="d-flex align-center gap-sm">
+    <div class="header-right">
+      <a class="header-logo-gov" href="https://www.sjdh.pe.gov.br/" target="_blank" rel="noopener noreferrer" aria-label="Secretaria de Justiça, Direitos Humanos e Prevenção à Violência — Governo de Pernambuco">
+        <img src="<?php echo esc_url( $procon_img_uri . '/logo-sjdh-pe.png' ); ?>" alt="Secretaria de Justiça, Direitos Humanos e Prevenção à Violência — Governo de Pernambuco" class="logo-sjdh-img">
+      </a>
+
       <?php if ( ! $procon_home ) : // Na página inicial a busca fica no banner. ?>
       <button class="header-search-btn" type="button" aria-label="Abrir busca" aria-expanded="false" title="Pesquisar">
         <?php echo procon_icon( 'search', 18 ); // phpcs:ignore ?>
       </button>
       <?php endif; ?>
+
       <button class="menu-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="main-nav">
         <span></span><span></span><span></span>
       </button>

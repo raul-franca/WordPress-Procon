@@ -1,7 +1,6 @@
 <?php
 /**
- * Rodapé: faixa de ajuda, identidade + contatos, colunas de links (menus) e rodapé inferior.
- * Markup idêntico ao index.html da página de referência; dados em Personalizar > PROCON.
+ * Rodapé: faixa de ajuda, identidade institucional dupla (PROCON PE + SJDH/PE), contatos, colunas de links e rodapé inferior.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,6 +14,7 @@ $procon_whatsapp = get_theme_mod( 'procon_whatsapp' );
 $procon_email    = get_theme_mod( 'procon_email' );
 $procon_cgov     = get_theme_mod( 'procon_consumidor_gov' );
 $procon_endereco = get_theme_mod( 'procon_endereco' );
+$procon_img_uri  = get_stylesheet_directory_uri() . '/assets/img';
 
 /**
  * Coluna de links do rodapé a partir de uma posição de menu.
@@ -63,12 +63,15 @@ function procon_footer_coluna( $location, $titulo, $aria, $classe = 'footer-link
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="footer-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="PROCON Pernambuco">
-            <div class="footer-logo-brasao" aria-hidden="true">
-              <img src="<?php echo esc_url( procon_logo_url() ); ?>" alt="" class="brasao-img-footer" onerror="this.parentElement.style.display='none'">
-            </div>
-            <span class="footer-logo-text">PROCON Pernambuco</span>
-          </a>
+          <div class="footer-logos">
+            <a class="footer-logo-procon" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="PROCON Pernambuco — Página inicial">
+              <img src="<?php echo esc_url( $procon_img_uri . '/logo-procon-pe.png' ); ?>" alt="PROCON Pernambuco" class="footer-procon-img">
+            </a>
+            <span class="footer-logos-divider" aria-hidden="true"></span>
+            <a class="footer-logo-gov" href="https://www.sjdh.pe.gov.br/" target="_blank" rel="noopener noreferrer" aria-label="Secretaria de Justiça, Direitos Humanos e Prevenção à Violência — Governo de Pernambuco">
+              <img src="<?php echo esc_url( $procon_img_uri . '/logo-sjdh-pe.png' ); ?>" alt="Secretaria de Justiça, Direitos Humanos e Prevenção à Violência — Governo de Pernambuco" class="footer-sjdh-img">
+            </a>
+          </div>
 
           <?php if ( get_theme_mod( 'procon_descricao' ) ) : ?>
             <p><?php echo esc_html( get_theme_mod( 'procon_descricao' ) ); ?></p>
