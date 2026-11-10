@@ -49,12 +49,11 @@ a.page-btn:hover { text-decoration: none; }
 .noticia-body ul,
 .noticia-body ol { padding-left: 1.5rem; }
 
-/* Correção de um defeito do CSS de referência: inner-pages.css declara .pesquisa-card duas vezes
-   e a segunda (fundo branco) anula .pesquisa-card-ativa — o card selecionado ficava com texto branco
-   sobre fundo branco. */
+/* Card ativo de Pesquisa de Preços: Azul Principal do Site com filete inferior Ouro */
 .pesquisa-card.pesquisa-card-ativa {
-  background: var(--color-secondary);
-  border-color: var(--color-secondary);
+  background: var(--color-primary, #002752);
+  border-color: var(--color-primary, #002752);
+  border-bottom: 3px solid #f59e0b;
 }
 
 /* Lacuna do CSS de referência: os canais do topo de Contatos (Sede / Telefones / E-mail) ficavam
@@ -78,3 +77,150 @@ a.page-btn:hover { text-decoration: none; }
 
 /* Widget VLibras acima do cabeçalho fixo */
 [vw] { z-index: calc(var(--z-sticky) + 20) !important; }
+
+/* ==========================================================================
+   DOCUMENTO OFICIAL ANEXO (NOTA TÉCNICA / PORTARIA EM NOTÍCIAS)
+   ========================================================================== */
+.procon-documento-anexo {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid var(--color-primary, #002752);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.procon-documento-anexo .anexo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.procon-documento-anexo .anexo-rotulo {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+.procon-documento-anexo .anexo-titulo {
+  font-size: 1rem;
+  color: var(--color-primary, #002752);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.procon-documento-anexo .anexo-acoes {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.procon-documento-anexo .anexo-acoes .btn {
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.procon-documento-anexo .anexo-acoes .btn-outline {
+  border: 1px solid var(--color-primary, #002752);
+  color: var(--color-primary, #002752);
+  background: transparent;
+}
+.procon-documento-anexo .anexo-acoes .btn-outline:hover {
+  background: rgba(0, 39, 82, 0.05);
+}
+.procon-documento-anexo .anexo-acoes .btn-primary {
+  background: #059669;
+  border: 1px solid #059669;
+  color: #ffffff;
+}
+.procon-documento-anexo .anexo-acoes .btn-primary:hover {
+  background: #047857;
+  border-color: #047857;
+}
+@media (max-width: 640px) {
+  .procon-documento-anexo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .procon-documento-anexo .anexo-acoes {
+    width: 100%;
+  }
+  .procon-documento-anexo .anexo-acoes .btn {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+/* ── BARRA DE RESOLUÇÃO DO RANKING (TOP 10) ─────────────────── */
+.resolucao-bar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-width: 140px !important;
+}
+
+.resolucao-track {
+  flex: 1 !important;
+  height: 8px !important;
+  background-color: #e2e8f0 !important;
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.resolucao-track .resolucao-fill,
+.resolucao-fill {
+  height: 8px !important;
+  border-radius: 9999px !important;
+  display: block !important;
+  transition: width 0.3s ease !important;
+}
+
+.resolucao-fill::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  height: 100% !important;
+  width: inherit !important;
+  border-radius: 9999px !important;
+}
+
+.resolucao-fill.resolucao-alta,
+.resolucao-fill.resolucao-alta::after,
+.resolucao-fill.resolucao-success,
+.resolucao-fill.resolucao-success::after {
+  background-color: #15803d !important;
+}
+
+.resolucao-fill.resolucao-media,
+.resolucao-fill.resolucao-media::after,
+.resolucao-fill.resolucao-warning,
+.resolucao-fill.resolucao-warning::after {
+  background-color: #d97706 !important;
+}
+
+.resolucao-fill.resolucao-baixa,
+.resolucao-fill.resolucao-baixa::after,
+.resolucao-fill.resolucao-danger,
+.resolucao-fill.resolucao-danger::after {
+  background-color: #dc2626 !important;
+}
+
+.resolucao-pct {
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  min-width: 38px !important;
+  color: #1e293b !important;
+}
+
+

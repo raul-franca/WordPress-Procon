@@ -150,7 +150,7 @@
   });
 
   /* ------------------------------------------------------------
-   * Ranking: período, busca por empresa e segmento
+   * Ranking: período (mensal/anual), busca por empresa e segmento
    * ------------------------------------------------------------ */
   var ranking = document.querySelector('.ranking-table');
   if (ranking) {
@@ -158,53 +158,74 @@
     var segmento = document.querySelector('[data-ranking="segmento"]');
     var vazio = document.querySelector('[data-ranking="vazio"]');
     var rotulo = document.querySelector('[data-ranking="periodo-rotulo"]');
+    var periodoAtivo = 'mensal';
 
     var filtrarRanking = function () {
       var q = busca ? busca.value.trim().toLowerCase() : '';
       var seg = segmento ? segmento.value : '';
       var visiveis = 0;
-      ranking.querySelectorAll('tbody tr').forEach(function (tr) {
-        var ok = (!seg || tr.getAttribute('data-segmento') === seg) &&
-                 (!q || tr.getAttribute('data-empresa').toLowerCase().indexOf(q) >= 0);
+      ranking.querySelectorAll('tbody tr[data-periodo]').forEach(function (tr) {
+        var matchPeriodo = tr.getAttribute('data-periodo') === periodoAtivo;
+        var matchSeg = !seg || tr.getAttribute('data-segmento') === seg;
+        var matchBusca = !q || (tr.getAttribute('data-empresa') || '').toLowerCase().indexOf(q) >= 0;
+
+        var ok = matchPeriodo && matchSeg && matchBusca;
         tr.hidden = !ok;
         if (ok) visiveis++;
       });
       if (vazio) vazio.hidden = visiveis > 0;
     };
+
     if (busca) busca.addEventListener('input', filtrarRanking);
     if (segmento) segmento.addEventListener('change', filtrarRanking);
 
     document.querySelectorAll('[data-ranking-periodo]').forEach(function (btn, _, todos) {
       btn.addEventListener('click', function () {
         todos.forEach(function (b) { b.classList.toggle('active', b === btn); });
-        if (rotulo) rotulo.textContent = btn.getAttribute('data-ranking-periodo') === 'mensal'
-          ? 'Mensal (Último Mês)' : 'Anual (Acumulado 12 meses)';
+        periodoAtivo = btn.getAttribute('data-ranking-periodo') || 'mensal';
+        var rotuloMensal = btn.getAttribute('data-rotulo-mensal') || 'Mensal';
+        var rotuloAnual  = btn.getAttribute('data-rotulo-anual')  || 'Anual';
+        if (rotulo) {
+          rotulo.textContent = periodoAtivo === 'mensal' ? rotuloMensal : rotuloAnual;
+        }
+        filtrarRanking();
       });
     });
+
+    filtrarRanking();
   }
 
   /* ------------------------------------------------------------
-   * Pesquisa de preços: seleção de categoria e painel de visualização
+   * Pesquisa de preços: seleção de categoria, abas, anos (2023-2026), meses e PDF
    * ------------------------------------------------------------ */
   var pesquisaCards = document.querySelectorAll('.pesquisa-card[data-slug]');
   var painel = document.querySelector('.pesquisa-painel');
   var vazioPesquisa = document.querySelector('.pesquisa-empty-state');
+
   if (pesquisaCards.length && painel) {
-    var ativa = null;
+    var slugAtivo = null;
+    var anoAtivo = '2026';
+
+    var anosContainer  = painel.querySelector('[data-container="anos"]');
+    var mesesContainer = painel.querySelector('[data-container="meses"]');
+    var tagAnoAtivo    = painel.querySelector('[data-campo="ano-ativo"]');
+    var iframe         = painel.querySelector('.pesquisa-iframe');
+    var avisoSemPdf    = painel.querySelector('[data-estado="sem-pdf"]');
+    var linkAbrir      = painel.querySelector('[data-pdf-acao="abrir"]');
+    var linkBaixar     = painel.querySelector('[data-pdf-acao="baixar"]');
 
     var setTexto = function (sel, valor) {
       painel.querySelectorAll(sel).forEach(function (el) { el.textContent = valor; });
     };
 
     var fecharPainel = function () {
-      ativa = null;
+      slugAtivo = null;
       painel.hidden = true;
       if (vazioPesquisa) vazioPesquisa.hidden = false;
       pesquisaCards.forEach(function (c) {
         c.classList.remove('pesquisa-card-ativa');
         c.setAttribute('aria-pressed', 'false');
       });
-      var iframe = painel.querySelector('iframe');
       if (iframe) iframe.removeAttribute('src');
     };
 
@@ -219,37 +240,131 @@
       });
     };
 
+    var obterAcervoCategoria = function (slug) {
+      var globalAcervo = window.PROCON_PESQUISAS_ACERVO || {};
+      return globalAcervo[slug] || {};
+    };
+
+    var carregarPdfNoPainel = function (url, titulo) {
+      if (url && url !== '#') {
+        if (iframe) {
+          iframe.hidden = false;
+          iframe.setAttribute('src', url);
+          iframe.setAttribute('title', titulo || 'Relatório PDF');
+        }
+        if (avisoSemPdf) avisoSemPdf.hidden = true;
+        if (linkAbrir)  { linkAbrir.href = url; linkAbrir.style.pointerEvents = 'auto'; linkAbrir.style.opacity = '1'; }
+        if (linkBaixar) { linkBaixar.href = url; linkBaixar.style.pointerEvents = 'auto'; linkBaixar.style.opacity = '1'; }
+      } else {
+        if (iframe) {
+          iframe.removeAttribute('src');
+          iframe.hidden = true;
+        }
+        if (avisoSemPdf) avisoSemPdf.hidden = false;
+        if (linkAbrir)  { linkAbrir.href = '#'; linkAbrir.style.pointerEvents = 'none'; linkAbrir.style.opacity = '0.45'; }
+        if (linkBaixar) { linkBaixar.href = '#'; linkBaixar.style.pointerEvents = 'none'; linkBaixar.style.opacity = '0.45'; }
+      }
+    };
+
+    var renderizarMeses = function () {
+      if (!mesesContainer || !slugAtivo) return;
+      if (tagAnoAtivo) tagAnoAtivo.textContent = anoAtivo;
+
+      var acervoCat = obterAcervoCategoria(slugAtivo);
+      var listaMeses = acervoCat[anoAtivo] || [];
+
+      var html = '<span class="pesquisa-filtro-rotulo">Mês:</span>';
+      if (listaMeses.length > 0) {
+        listaMeses.forEach(function (item, idx) {
+          var ativoClass = idx === 0 ? ' active' : '';
+          html += '<button type="button" class="pesquisa-pill' + ativoClass + '" data-mes-idx="' + idx + '">' + item.mes + '</button>';
+        });
+        mesesContainer.innerHTML = html;
+        carregarPdfNoPainel(listaMeses[0].url, listaMeses[0].titulo);
+
+        mesesContainer.querySelectorAll('[data-mes-idx]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            mesesContainer.querySelectorAll('.pesquisa-pill').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var item = listaMeses[parseInt(btn.getAttribute('data-mes-idx'), 10)];
+            if (item) carregarPdfNoPainel(item.url, item.titulo);
+          });
+        });
+      } else {
+        html += '<span style="color:#64748b; font-size:0.8rem;">Sem edições em ' + anoAtivo + '</span>';
+        mesesContainer.innerHTML = html;
+        carregarPdfNoPainel('', '');
+      }
+    };
+
+    // Cliques nos seletores de ano
+    if (anosContainer) {
+      anosContainer.querySelectorAll('[data-ano-pill]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          anoAtivo = btn.getAttribute('data-ano-pill');
+          anosContainer.querySelectorAll('.pesquisa-pill').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          renderizarMeses();
+        });
+      });
+    }
+
+    // Clique nos cards de categoria
     pesquisaCards.forEach(function (card) {
       card.addEventListener('click', function () {
-        if (ativa === card) { fecharPainel(); return; }
-        ativa = card;
+        var slug = card.getAttribute('data-slug');
+        if (slugAtivo === slug && !painel.hidden) {
+          fecharPainel();
+          return;
+        }
+
+        slugAtivo = slug;
         pesquisaCards.forEach(function (c) {
           var on = c === card;
           c.classList.toggle('pesquisa-card-ativa', on);
           c.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
-        var nome = card.getAttribute('data-nome');
-        var url = card.getAttribute('data-url');
+
+        var nome      = card.getAttribute('data-nome') || '';
+        var emoji     = card.getAttribute('data-emoji') || '📊';
+        var descricao = card.getAttribute('data-descricao') || '';
+
         setTexto('[data-campo="nome"]', nome);
-        setTexto('[data-campo="ano"]', card.getAttribute('data-ano'));
-        setTexto('[data-campo="descricao"]', card.getAttribute('data-descricao'));
-        painel.querySelectorAll('[data-campo="url"]').forEach(function (a) { a.setAttribute('href', url); });
-        var iframe = painel.querySelector('iframe');
-        if (iframe) {
-          iframe.setAttribute('src', url);
-          iframe.setAttribute('title', 'Pesquisa de Preços — ' + nome);
-        }
+        setTexto('[data-campo="emoji"]', emoji);
+        setTexto('[data-campo="descricao"]', descricao);
         painel.setAttribute('aria-label', 'Pesquisa selecionada: ' + nome);
+
         painel.hidden = false;
         if (vazioPesquisa) vazioPesquisa.hidden = true;
+
         mostrarAba('online');
-        setTimeout(function () { painel.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+
+        // Escolhe o ano mais recente com PDF cadastrado ou o ano ativo
+        var acervoCat = obterAcervoCategoria(slugAtivo);
+        var anosDisponiveis = ['2026', '2025', '2024', '2023'];
+        var primeiroComPdf = anosDisponiveis.find(function (a) { return (acervoCat[a] || []).length > 0; });
+        anoAtivo = primeiroComPdf || '2026';
+
+        if (anosContainer) {
+          anosContainer.querySelectorAll('[data-ano-pill]').forEach(function (b) {
+            b.classList.toggle('active', b.getAttribute('data-ano-pill') === anoAtivo);
+          });
+        }
+
+        renderizarMeses();
+
+        setTimeout(function () {
+          painel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 80);
       });
     });
 
+    // Abas
     painel.querySelectorAll('.viewer-tab').forEach(function (t) {
       t.addEventListener('click', function () { mostrarAba(t.getAttribute('data-aba')); });
     });
+
+    // Botão fechar
     var fechar = painel.querySelector('[data-acao="fechar"]');
     if (fechar) fechar.addEventListener('click', fecharPainel);
   }
